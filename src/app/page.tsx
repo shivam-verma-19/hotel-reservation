@@ -24,11 +24,11 @@ export default function Home() {
 
   const handleRandomize = () => {
     const newHotel = generateHotel();
-    for (const floor in newHotel) {
-      newHotel[floor].forEach((r) => {
-        r.booked = Math.random() > 0.7;
-      });
-    }
+    const allRooms = Object.values(newHotel).flat();
+    const shuffled = allRooms.sort(() => 0.5 - Math.random());
+    shuffled.forEach((r, i) => {
+      r.booked = i < roomCount;
+    });
     setHotel(newHotel);
     setLastBooking([]);
     setTravelTime(null);
