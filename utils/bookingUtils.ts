@@ -37,6 +37,14 @@ function getCombinations<T>(arr: T[], k: number): T[][] {
 }
 
 export function bookRooms(hotel: Hotel, count: number) {
+  if (count > 5) {
+    return {
+      booked: [],
+      travelTime: 0,
+      error: "You can book a maximum of 5 rooms at a time.",
+    };
+  }
+
   const allAvailable: { floor: number; room: Room }[] = [];
 
   for (const floor in hotel) {

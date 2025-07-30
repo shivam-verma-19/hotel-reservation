@@ -41,29 +41,23 @@ export default function Home() {
   };
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">Hotel Room Reservation</h1>
+    <main className="max-w-6xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">Hotel Room Reservation</h1>
 
-      <div className="flex gap-4 mb-4">
+      <div className="flex gap-4 mb-6">
         <input
           type="number"
           value={roomCount}
           onChange={(e) => setRoomCount(Number(e.target.value))}
           min={1}
-          max={100}
+          max={5}
           className="border p-2 rounded w-32"
         />
         <button
           onClick={handleBooking}
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
         >
-          Book Rooms
-        </button>
-        <button
-          onClick={handleRandomize}
-          className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
-        >
-          Random Occupancy
+          Book
         </button>
         <button
           onClick={handleReset}
@@ -71,16 +65,43 @@ export default function Home() {
         >
           Reset
         </button>
+        <button
+          onClick={handleRandomize}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
+        >
+          Random
+        </button>
       </div>
 
       {lastBooking.length > 0 && (
         <div className="mb-4">
-          <p className="text-green-700">Booked Rooms: {lastBooking.join(", ")}</p>
-          <p className="text-sm text-gray-600">Total Travel Time: {travelTime}</p>
+          <p className="text-green-700">
+            Booked Rooms: {lastBooking.join(", ")}
+          </p>
+          <p className="text-sm text-gray-600">
+            Total Travel Time: {travelTime}
+          </p>
         </div>
       )}
 
-      <RoomGrid hotel={hotel} />
+      <div className="flex gap-6 items-start">
+        {/* Elevator */}
+        <div className="w-16 flex flex-col-reverse items-center">
+          {Object.keys(hotel)
+            .sort((a, b) => Number(a) - Number(b))
+            .map((floor) => (
+              <div
+                key={floor}
+                className="h-16 flex items-center justify-center border w-full text-sm font-bold"
+              >
+                {floor}
+              </div>
+            ))}
+        </div>
+
+        {/* Room Grid */}
+        <RoomGrid hotel={hotel} />
+      </div>
     </main>
   );
 }
