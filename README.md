@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏨 Hotel Room Reservation
+
+A simple hotel room reservation demo built with [Next.js](https://nextjs.org) and React. Users can book rooms, view hotel occupancy, and randomize room bookings for testing.
+
+---
+
+## Features
+
+- **Book Rooms:** Reserve 1–5 rooms at a time, with the system finding the best available grouping.
+- **Visual Room Grid:** See each floor's room status (booked/available) in a color-coded grid.
+- **Randomize Occupancy:** Instantly fill rooms at random to simulate real-world scenarios.
+- **Travel Time Calculation:** Shows the "travel time" needed to reach all booked rooms (minimizing distance).
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/hotel-reservation.git
+   cd hotel-reservation
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+### Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
+
+```
+hotel-reservation/
+├── components/
+│   └── roomGrid.tsx         # Room grid display component
+├── public/                  # Static assets (SVGs, etc.)
+├── src/
+│   └── app/
+│       └── page.tsx         # Main application page
+├── utils/
+│   └── bookingUtils.ts      # Hotel logic and booking algorithms
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+---
+
+## Usage
+
+- **Book Rooms:**  
+  Enter the number of rooms (1–5) and click "Book". The system will reserve the best available group of rooms.
+- **Randomize:**  
+  Click "Randomize" to fill rooms randomly and test booking logic.
+- **Room Grid:**  
+  Green = available, Red = booked.
+
+---
+
+## Customization
+
+- **Hotel Size:**  
+  Edit `generateHotel()` in [`utils/bookingUtils.ts`](utils/bookingUtils.ts) to change the number of floors or rooms per floor.
+- **Booking Logic:**  
+  The booking algorithm prioritizes grouping rooms on the same floor and minimizes travel time.
+
+---
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+ISC
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
