@@ -45,7 +45,6 @@ export function bookRooms(hotel: Hotel, count: number) {
     });
   }
 
-  // Try same floor
   let bestSame = null;
   for (const [floorStr, rooms] of Object.entries(hotel)) {
     const available = rooms.filter((r) => !r.booked);
@@ -66,7 +65,6 @@ export function bookRooms(hotel: Hotel, count: number) {
     };
   }
 
-  // Try multi-floor
   if (allAvailable.length >= count) {
     const combinations = getCombinations(allAvailable, count);
     let bestCombo = null;
